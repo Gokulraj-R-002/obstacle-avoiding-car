@@ -43,6 +43,11 @@ void loop() {
   Serial.print(distance);
   Serial.println(" cm");
 
+//  digitalWrite(Lf, HIGH);
+//  digitalWrite(Lb, LOW);
+//  digitalWrite(Rf, HIGH);
+//  digitalWrite(Rb, LOW);
+
   if (distance > 15) {
     turn = 0;
     
@@ -70,30 +75,46 @@ void loop() {
     else if(turn==1)// taking u turn if an obstacle is present after first turn
     {
       turn = 2;
-      digitalWrite(Lf,HIGH);
+
+      digitalWrite(Lf, LOW);
       digitalWrite(Lb, LOW);
       digitalWrite(Rf, LOW);
-      digitalWrite(Rb, LOW);
-      delay(6000);// time taken to rotate 180 degree
-    }
-    else if(turn==2)// turning right when obstacle is present after turn 2
-    {
-      turn = 3;
-      digitalWrite(Lf,HIGH);
-      digitalWrite(Lb, LOW);
-      digitalWrite(Rf, LOW);
-      digitalWrite(Rb, LOW);
-      delay(3000);// time taken to rotate 90 degree
-    }
-    else if(turn == 3)
-    {
-      turn = 4;
-      Serial.print(" every path is blocked");
-      digitalWrite(Lf,LOW);
+      digitalWrite(Rb, HIGH);
+      delay(3000);
+      
+      digitalWrite(Lf, HIGH);
       digitalWrite(Lb, LOW);
       digitalWrite(Rf, LOW);
       digitalWrite(Rb, LOW);
       delay(3000);
+//      delay(6000);// time taken to rotate 180 degree
     }
+    else if(turn==2)// turning right when obstacle is present after turn 2
+    {
+//      turn = 3;
+      turn = 0;
+
+      digitalWrite(Lf, LOW);
+      digitalWrite(Lb, LOW);
+      digitalWrite(Rf, LOW);
+      digitalWrite(Rb, HIGH);
+      delay(3000);
+      
+//      digitalWrite(Lf, HIGH);
+//      digitalWrite(Lb, LOW);
+//      digitalWrite(Rf, LOW);
+//      digitalWrite(Rb, LOW);
+//      delay(3000);// time taken to rotate 90 degree
+    }
+//    else if(turn == 3)
+//    {
+//      turn = 4;
+//      Serial.print(" every path is blocked");
+//      digitalWrite(Lf,LOW);
+//      digitalWrite(Lb, LOW);
+//      digitalWrite(Rf, LOW);
+//      digitalWrite(Rb, LOW);
+//      delay(3000);
+//    }
   }
 }
